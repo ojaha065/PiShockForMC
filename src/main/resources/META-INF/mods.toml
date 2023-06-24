@@ -1,0 +1,43 @@
+modLoader="javafml"
+loaderVersion="[45,)"
+license="MIT"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" # TODO
+
+[[mods]]
+modId="pishockmc"
+version="1.19-1.0.0.0"
+displayName="PiShock for Minecraft"
+
+#updateJSONURL="https://change.me.example.invalid/updates.json" # TODO
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" # TODO
+logoFile="logo.png" # TODO: An actual proper logo. This is just 5-minutes-in-photoshop placeholder...
+
+credits="Special thanks to PiShock and its main developer Fedack/Lethos (https://twitter.com/Lethos_OTStorm) for making this mod possible :)"
+authors="JHaiko"
+description='''
+PiShock Shock Collar Integration for Minecraft
+
+This simple mod allows players to connect their PiShock device to the game for some added stakes. Whenever the player takes damage, they will get a corresponding shock, the intensity of which can be configured and will scale up based on the amount of damage taken.
+
+For detailed setup instructions and configuration, please refer to the GitHub page.
+
+---
+
+Authors of this mod or PiShock are not responsible for any injuries caused by use of the shock collar. It's not recommended to put any kind of electrical device near the heart or use any kind of shock collar if you have a heart condition. Shock collars are not meant for use on humans and can cause serious injury, even cardiac events. We kindly urge you to prioritize safety, understand your personal and others limitations, and exercise caution at all times.
+'''
+
+# Display Test controls the display of the mod in the server connection screen
+displayTest="IGNORE_ALL_VERSION" # This is a client-only mod
+
+[[dependencies.pishockmc]]
+    modId="forge"
+    mandatory=true
+    versionRange="[45,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.pishockmc]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19,1.20)"
+    ordering="AFTER"
+    side="BOTH"
