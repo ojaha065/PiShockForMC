@@ -15,7 +15,7 @@ public class Utils {
 	}
 
 	/**
-	 * Simple helper for logging that prepends "[PiShock]" to String
+	 * Simple helper for logging. Prepends "[PiShock]" to String
 	 * @param message The input
 	 * @return "[PiShock] " + the given input
 	 */

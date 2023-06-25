@@ -11,7 +11,7 @@ public class Config {
 
 	public static ForgeConfigSpec.EnumValue<INTENSITY_SETTING_VALUE> intensity;
 	public static ForgeConfigSpec.EnumValue<PiShockAPI.OP_CODE> mode;
-	public static ForgeConfigSpec.BooleanValue deathPunishment;
+	public static ForgeConfigSpec.BooleanValue punishmentForDeath;
 
 	static {
 		INSTANCE = build(new ForgeConfigSpec.Builder()).build();
@@ -38,10 +38,10 @@ public class Config {
 			.comment("Set the shock/vibration/beep intensity range", "Ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100")
 			.defineEnum("intensity_range", INTENSITY_SETTING_VALUE.MINIMAL, INTENSITY_SETTING_VALUE.values());
 
-		// TODO: Make death punishment (duration, intensity etc.) configurable
-		deathPunishment = builder
+		// TODO: Make the punishment (duration, intensity etc.) configurable
+		punishmentForDeath = builder
 			.comment("If enabled, sends 5 second shock/vibrate/beep at the maximum* intensity when the player dies", "(*the maximum is based on the configured intensity range)")
-			.define("death_punishment", false);
+			.define("punishment_for_death", false);
 
 		return builder;
 	}

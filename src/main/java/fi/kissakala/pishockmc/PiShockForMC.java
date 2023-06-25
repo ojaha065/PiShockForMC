@@ -29,7 +29,7 @@ public class PiShockForMC {
     @Nullable private static Integer cooldownTimer = null;
     @Nullable private static Integer gracePeriodTimer = null;
     private static float damageBacklog = 0f;
-    private static DEATH_PUNISHMENT_STATE deathPunishmentState = DEATH_PUNISHMENT_STATE.INACTIVE;
+    private static PUNISHMENT_FOR_DEATH_STATE punishmentForDeathState = PUNISHMENT_FOR_DEATH_STATE.INACTIVE;
 
     public PiShockForMC() {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
@@ -48,7 +48,7 @@ public class PiShockForMC {
         LOGGER.info(Utils.log("PiShock for Minecraft initialized"));
     }
 
-    // As far as I know there isn't a client-side event to easily watch player health in Forge.
+    // As far as I know, there isn't a client-side event to easily watch player health in Forge.
     // So need to do this manually.
     private void onClientTick(final TickEvent.ClientTickEvent event) {
         // Skip tick start event
@@ -58,11 +58,12 @@ public class PiShockForMC {
 
         KeyMappingsHandler.onClientTick(API);
 
-        // Check for a waiting death punishment early in the flow so the player cannot escape it by pausing or exiting the world once it's activated
-        if (DEATH_PUNISHMENT_STATE.WAITING.equals(deathPunishmentState)) {
+        // Check for a waiting punishment for death early in the flow
+        // so the player cannot escape it by pausing or exiting the world once it's activated
+        if (PUNISHMENT_FOR_DEATH_STATE.WAITING.equals(punishmentForDeathState)) {
             if (cooldownTimer == null || --cooldownTimer <= 0) {
                 cooldownTimer = null;
-                deathPunishmentState = DEATH_PUNISHMENT_STATE.DONE;
+                punishmentForDeathState = PUNISHMENT_FOR_DEATH_STATE.DONE;
                 API.sendRequest(
                     Config.mode.get(),
                     (int) (20f * Config.intensity.get().getMultiplier()),
@@ -87,7 +88,8 @@ public class PiShockForMC {
         }
 
         // Skip if the player is in creative or spectator mode
-        // Player usually cannot take damage while in those game modes and even if they somehow do we don't want to shock them for it
+        // Player usually cannot take damage while in those game modes,
+        // and even if they somehow do, we don't want to shock them for it
         if (player.isCreative() || player.isSpectator()) {
             resetState();
             return;
@@ -96,7 +98,7 @@ public class PiShockForMC {
         final float currentHealth = player.getHealth();
 
         if (gracePeriodTimer != null) {
-            // If the grace period is still active just update the current health and short circuit
+            // If the grace period is still active, just update the current health and short circuit
             // Also, do not advance the grace period while the player is dead
             //  --> Fixes an edge case issue where punishment for death would be unfairly activated if the player joins a world where they are currently dead
             if (currentHealth <= 0 || --gracePeriodTimer > 0) {
@@ -108,7 +110,8 @@ public class PiShockForMC {
             Minecraft.getInstance().gui.getChat().addMessage(Component.literal("PiShock enabled. You'll be punished for any damage you take..."));
         }
 
-        // If we don't know the health from the previous tick it most likely means that the player just joined the world.
+        // If we don't know the health from the previous tick,
+        // it most likely means that the player just joined the world.
         // Just start the grace period (to avoid unfairly shocking the player immediately after the world has been loaded) for 100 ticks and skip the rest
         if (previousTickHealth == null) {
             previousTickHealth = currentHealth;
@@ -116,16 +119,16 @@ public class PiShockForMC {
             return;
         }
 
-        // Main business logic
-        // First check if the player is dead and if the punishment for death is enabled...
-        if (currentHealth <= 0 && Config.deathPunishment.get()) {
-            if (DEATH_PUNISHMENT_STATE.DONE.equals(deathPunishmentState)) {
+        // The main business logic
+        // First checks if the player is dead and if the punishment for death is enabled...
+        if (currentHealth <= 0 && Config.punishmentForDeath.get()) {
+            if (PUNISHMENT_FOR_DEATH_STATE.DONE.equals(punishmentForDeathState)) {
                 LOGGER.trace(Utils.log("Player is dead but has been already punished for this death --> Do nothing"));
                 return;
             }
 
             LOGGER.debug(Utils.log("Player has died and the punishment for death is enabled --> Get ready..."));
-            deathPunishmentState = DEATH_PUNISHMENT_STATE.WAITING;
+            punishmentForDeathState = PUNISHMENT_FOR_DEATH_STATE.WAITING;
             damageBacklog = 0f; // Cancel any other pending damage
         }
 
@@ -133,7 +136,7 @@ public class PiShockForMC {
         else if (currentHealth < previousTickHealth) {
             final float lostHealth = previousTickHealth - currentHealth;
             LOGGER.debug(Utils.log("Player has taken %s damage since the last tick".formatted(lostHealth)));
-            deathPunishmentState = DEATH_PUNISHMENT_STATE.INACTIVE;
+            punishmentForDeathState = PUNISHMENT_FOR_DEATH_STATE.INACTIVE;
 
             if (currentHealth < player.getMaxHealth()) { // Ignore this "damage" if the player somehow already is at their maximum health
                 if (cooldownTimer == null) {
@@ -183,10 +186,10 @@ public class PiShockForMC {
         cooldownTimer = null;
         gracePeriodTimer = null;
         damageBacklog = 0f;
-        deathPunishmentState = DEATH_PUNISHMENT_STATE.INACTIVE;
+        punishmentForDeathState = PUNISHMENT_FOR_DEATH_STATE.INACTIVE;
     }
 
-    private enum DEATH_PUNISHMENT_STATE {
+    private enum PUNISHMENT_FOR_DEATH_STATE {
         INACTIVE,
         WAITING,
         DONE

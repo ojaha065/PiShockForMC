@@ -57,7 +57,7 @@ public class PiShockAPI implements Closeable {
                     Map.entry("Username", Config.username.get()),
                     Map.entry("Apikey", Config.apikey.get()),
                     Map.entry("Code", Config.code.get()),
-                    Map.entry("Name", "PiShock for Minecraft"),
+                    Map.entry("Name", "PiShock integration for Minecraft"),
                     Map.entry("Op", operation.getValue()),
                     Map.entry("Duration", duration >= 100 ? Utils.clamp(duration, 100, 15_000) : Utils.clamp(duration, 1, 15)),
                     Map.entry("Intensity", Utils.clamp(intensity, 1, 100))
