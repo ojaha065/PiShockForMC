@@ -33,7 +33,7 @@ The mod configuration file is named `pishockmc-client.toml` and it can be edited
 #Allowed Values: Shock, Vibrate, Beep
 mode = "Shock"
 #Set the shock/vibration/beep intensity range
-#Ranges from lowest to highest are: 1 - 20, 21 - 40, 41-60, 61 - 80, 80 - 100
+#Ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100
 #Allowed Values: MINIMAL, NORMAL, INTENSE, HARDCORE, ULTRA_HARDCORE
 intensity_range = "NORMAL"
 #If enabled, sends 5 second shock/vibrate/beep at the maximum* intensity when the player dies
