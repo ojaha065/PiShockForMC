@@ -1,7 +1,10 @@
 # PiShock Shock Collar Integration for Minecraft
-This simple Forge mod allows players to connect their [PiShock](https://pishock.com) device to the game for some added stakes. Whenever the player takes damage, they will get a corresponding shock, the intensity of which can be configured and will scale up based on the amount of damage taken.
+This simple Forge mod allows players
+to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun...:smiling_imp:
+Whenever the player takes damage, they will get a corresponding shock,
+the intensity of which can be configured and will scale up based on the amount of damage taken.
 
-This is a client-side mod, so it can be used in any multiplayer server.
+**This is a client-side mod, it should only be installed client-side, and it works in multiplayer too.**
 
 ## Supported Minecraft/Minecraft Forge versions
 * 1.19.x (Minecraft Forge 45.x)
@@ -9,9 +12,10 @@ This is a client-side mod, so it can be used in any multiplayer server.
 ## Needed hardware
 * A PiShock
 * A shocker — needs to be paired to the PiShock
+  * See [PiShock website](https://pishock.com) for help on pairing your shocker.
   * Multiple shockers might be supported in a future release.
 
-## Setup instructions (tl;dr — I've done this before, and I know what I'm doing)
+## Setup instructions (tl;dr — I've done this kind of thing before, and I know what I'm doing)
 1. Download the latest release and drop the jar into Forge `mods` folder.
 2. Launch the game once and then see the _Mod configuration_ section below.
 3. Launch the game again. If everything is set currently, the shocker will vibrate once for one second during the Minecraft startup process.
@@ -35,7 +39,7 @@ mode = "Shock"
 #Set the shock/vibration/beep intensity range
 #Ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100
 #Allowed Values: MINIMAL, NORMAL, INTENSE, HARDCORE, ULTRA_HARDCORE
-intensity_range = "NORMAL"
+intensity_range = "MINIMAL"
 #If enabled, sends 5 second shock/vibrate/beep at the maximum* intensity when the player dies
 #(*the maximum is based on the configured intensity range)
 punishment_for_death = false
@@ -68,10 +72,26 @@ When creating a share code, you need to set `Max Duration` to value of at least 
 | HARDCORE         | 61% - 80%               |
 | ULTRA_HARDCORE   | 81% - 100%              |
 
+## TODO
+* **Support for multiple shockers**
+  * I currently only own one, so testing and debugging would be kinda hard.
+* **Support for wider range of MC/Forge versions**
+* In-game configuration GUI
+* More configuration options
+* Better documentation
+
 ## The boring stuff
-Authors of this mod are not responsible for any injuries caused by use of the shock collar.
+### tl;dr
+Don't be stupid.
+
+### Long version
+Although nothing about this repository is inherently age gated,
+the PiShock device and themes around it are targeted towards mature audiences only.
+Proceed at your own discretion.
+
+The author of this mod is not responsible for any injuries caused by use of any shock collar.
 It's not recommended to put any kind of electrical device near the heart
 or use any kind of shock collar if you have a heart condition.
 Shock collars are not meant for use on humans and can cause serious injury, even cardiac events.
-We kindly urge you to prioritize safety,
-understand your personal and other's limitations, and exercise caution at all times.
+I kindly urge you to prioritize safety,
+understand your personal and others limitations, and exercise caution at all times.
