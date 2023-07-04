@@ -1,6 +1,6 @@
 # PiShock Shock Collar Integration for Minecraft
 This simple Forge mod allows players
-to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun...:smiling_imp:
+to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun..._:smiling_imp:
 Whenever the player takes damage, they will get a corresponding shock,
 the intensity of which can be configured and will scale up based on the amount of damage taken.
 
