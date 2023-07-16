@@ -35,7 +35,7 @@ public class Config {
 			.defineEnum("mode", PiShockAPI.OP_CODE.Shock, PiShockAPI.OP_CODE.values());
 
 		intensity = builder
-			.comment("Set the shock/vibration/beep intensity range", "Ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100")
+			.comment("Set the shock/vibration/beep intensity range", "The percentage ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100")
 			.defineEnum("intensity_range", INTENSITY_SETTING_VALUE.MINIMAL, INTENSITY_SETTING_VALUE.values());
 
 		// TODO: Make the punishment (duration, intensity etc.) configurable
