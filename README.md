@@ -7,7 +7,7 @@ the intensity of which can be configured and will scale up based on the amount o
 **This is a client-side mod, it should only be installed client-side, and it works in multiplayer too.**
 
 ## Supported Minecraft/Minecraft Forge versions
-* 1.19.x (Minecraft Forge 45.x)
+* 1.19.x (Minecraft Forge 44.x, 45.x)
 
 ## Needed hardware
 * A PiShock
@@ -20,7 +20,7 @@ the intensity of which can be configured and will scale up based on the amount o
 2. Launch the game once and then see the _Mod configuration_ section below.
 3. Launch the game again. If everything is set currently, the shocker will vibrate once for one second during the Minecraft startup process.
 
-## Setup instructions
+## Setup instructions (longer version)
 0. Have a working Minecraft and Forge installation. See [How to install Forge](https://www.wikihow.com/Install-Minecraft-Forge) if you're unsure.
    * Make sure you've launched the game at least once with Forge installed so the required folder structure is generated.
 1. Download the latest release jar from [here](https://github.com/ojaha065/PiShockForMC/releases).
@@ -28,6 +28,14 @@ the intensity of which can be configured and will scale up based on the amount o
 3. Run the game once so a configuration file for the mod gets generated.
 4. See the _Mod configuration_ section below. The configuration file can be found inside `config` folder inside Minecraft game directory.
 5. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
+
+## Modpacks and compatability with other mods
+The mod is licensed under a MIT license, so feel free to include it in any modpack. No attribution required.
+
+This mod should be compatible with almost everything.
+If you're using other mods that alter the player health (e.g., changes the maxium health),
+please note that the shock intensity scaling might not work as expected.
+However, even in that case the player will never be shocked with higher intensity than the configured `intensity_range` allows.
 
 ## Mod configuration
 The mod configuration file is named `pishockmc-client.toml` and it can be edited with any text editor. In-game settings GUI might be added in a later release to make configuring easier. The configuration file will look like this:
@@ -37,7 +45,7 @@ The mod configuration file is named `pishockmc-client.toml` and it can be edited
 #Allowed Values: Shock, Vibrate, Beep
 mode = "Shock"
 #Set the shock/vibration/beep intensity range
-#Ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100
+#The percentage ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100
 #Allowed Values: MINIMAL, NORMAL, INTENSE, HARDCORE, ULTRA_HARDCORE
 intensity_range = "MINIMAL"
 #If enabled, sends 5 second shock/vibrate/beep at the maximum* intensity when the player dies
@@ -57,11 +65,15 @@ punishment_for_death = false
 
 `username`, `apikey` and `code` are all mandatory, and you must get all of them from https://pishock.com. It's also important to set the desired intensity level (`intensity_range`). The default value is `MINIMAL`, but personally I feel that `NORMAL` has the best balance between feeling kinda nasty but not being too overwhelming. But it's all very dependent on each person's pain tolerance and location of the shocker, so feel free to experiment.
 
+### Punishment for death
+Setting `punishment_for_death` option to `true` will send 5-seconds shock at the maxium (within the configured `intensity_range`) intensity when the player dies in-game.
+More configurable (intensity, duration etc.) punishment might be added in a later release.
+
 ### :warning: Important notice
 The mod uses duration of 600 milliseconds for most shocks.
 Using milliseconds instead of seconds is currently undocumented feature in PiShock API,
 and it seems that `Max Duration` setting for share codes does not work correctly with it.
-When creating a share code, you need to set `Max Duration` to value of at least 6 (seconds).
+When creating a share code, the `Max Duration` value needs to be set to at least 6 (seconds).
 
 ### Intensity ranges
 | intensity_range  | Shock intensity % range |
