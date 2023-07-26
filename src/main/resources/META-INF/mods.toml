@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[44,)"
+loaderVersion="[47,)"
 license="MIT"
 issueTrackerURL="https://github.com/ojaha065/PiShockForMC/issues"
 
 [[mods]]
 modId="pishockmc"
-version="1.19-1.1.0.1"
+version="1.20-1.1.0.2"
 displayName="PiShock for Minecraft"
 
 #updateJSONURL="https://change.me.example.invalid/updates.json" # TODO
@@ -32,12 +32,12 @@ displayTest="IGNORE_ALL_VERSION" # This is a client-only mod
 [[dependencies.pishockmc]]
     modId="forge"
     mandatory=true
-    versionRange="[44,)"
+    versionRange="[47,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.pishockmc]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,1.20)"
+    versionRange="[1.20,1.21)"
     ordering="AFTER"
     side="BOTH"
