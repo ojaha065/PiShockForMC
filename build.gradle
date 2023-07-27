@@ -1,9 +1,9 @@
 plugins {
     id 'eclipse'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = '1.19-1.1.0.1'
+version = '1.20-1.1.0.2'
 group = 'fi.kissakala'
 base.archivesName = 'pishockmc'
 
@@ -11,7 +11,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.19.4'
+    mappings channel: 'official', version: '1.20.1'
 
     runs {
         client {
@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.4-45.1.0'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.1.0'
 }
 
 jar {
