@@ -8,6 +8,7 @@ the intensity of which can be configured and will scale up based on the amount o
 
 ## Supported Minecraft/Minecraft Forge versions
 * 1.19.x (Minecraft Forge 44.x, 45.x)
+* 1.20.x (Minecraft Forge 46.x, 47.x)
 
 ## Needed hardware
 * A PiShock
@@ -30,7 +31,7 @@ the intensity of which can be configured and will scale up based on the amount o
 5. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
 
 ## Modpacks and compatability with other mods
-The mod is licensed under a MIT license, so feel free to include it in any modpack. No attribution required.
+The mod is licensed under a MIT license, so feel free to include it in any modpack. No attribution is required.
 
 This mod should be compatible with almost everything.
 If you're using other mods that alter the player health (e.g., changes the maxium health),
@@ -63,7 +64,7 @@ punishment_for_death = false
 
 ```
 
-`username`, `apikey` and `code` are all mandatory, and you must get all of them from https://pishock.com. It's also important to set the desired intensity level (`intensity_range`). The default value is `MINIMAL`, but personally I feel that `NORMAL` has the best balance between feeling kinda nasty but not being too overwhelming. But it's all very dependent on each person's pain tolerance and location of the shocker, so feel free to experiment.
+`username`, `apikey` and `code` are all mandatory, and you must get all of them from [pishock.com](https://pishock.com). It's also important to set the desired intensity level (`intensity_range`). The default value is `MINIMAL`, but personally I feel that `NORMAL` has the best balance between feeling kinda nasty but not being too overwhelming. But it's all very dependent on each person's pain tolerance and location of the shocker, so feel free to experiment.
 
 ### Punishment for death
 Setting `punishment_for_death` option to `true` will send 5-seconds shock at the maxium (within the configured `intensity_range`) intensity when the player dies in-game.
@@ -84,10 +85,20 @@ When creating a share code, the `Max Duration` value needs to be set to at least
 | HARDCORE         | 61% - 80%               |
 | ULTRA_HARDCORE   | 81% - 100%              |
 
+## Common issues and FAQ
+### Sometimes the shocker isn't activated when it should
+From personal experience,
+I've found that sometimes the PiShock device itself and/or the shocker are a little finicky
+and might sometimes (rarely) skip some shocks if multiple ones are sent in a short period of time.
+
+If you're experiencing this,
+the first step is to check the logs at [pishock.com](https://pishock.com)
+and see if a correct amount API events from `PiShock integration for Minecraft` is displayed.
+If so, the problem is at PiShock's end, and the mod really cannot do anything about it.
+
 ## TODO
 * **Support for multiple shockers**
   * I currently only own one, so testing and debugging would be kinda hard.
-* **Support for wider range of MC/Forge versions**
 * In-game configuration GUI
 * More configuration options
 * Better documentation
@@ -101,9 +112,9 @@ Although nothing about this repository is inherently age gated,
 the PiShock device and themes around it are targeted towards mature audiences only.
 Proceed at your own discretion.
 
-The author of this mod is not responsible for any injuries caused by use of any shock collar.
+The authors of this mod are not responsible for any injuries caused by use of any shock collar.
 It's not recommended to put any kind of electrical device near the heart
 or use any kind of shock collar if you have a heart condition.
 Shock collars are not meant for use on humans and can cause serious injury, even cardiac events.
-I kindly urge you to prioritize safety,
+We kindly urge you to prioritize safety,
 understand your personal and others limitations, and exercise caution at all times.
