@@ -105,23 +105,36 @@ public class PiShockAPI implements Closeable {
                 return this.connectionState;
             }
 
-            if (shockerInfo.maxDuration < 6) {
+            final float requiredMaxDuration = Math.max(
+                6,
+                Config.punishmentForDeathEnabled.get()
+                    ? Config.punishmentForDeathDuration.get()
+                    : 0
+            );
+            if (shockerInfo.maxDuration < requiredMaxDuration) {
                 LOGGER.warn(
-                    Utils.log("The Max Duration setting of PiShock shocker \"{}\" is too low ({}). It needs to be at least 6. See the mod documentation for more details."),
+                    Utils.log("The Max Duration setting of PiShock shocker \"{}\" is too low ({}). It needs to be at least {}. See the mod documentation for more details."),
                     shockerInfo.name,
-                    shockerInfo.maxDuration
+                    shockerInfo.maxDuration,
+                    requiredMaxDuration
                 );
 
                 this.connectionState = CONNECTION_STATE.CONNECTED_WITH_WARNING;
                 return this.connectionState;
             }
 
-            if (shockerInfo.maxIntensity < Config.intensity.get().getMultiplier() * 20) {
+            final float requiredMaxIntensity = Math.max(
+                Config.intensity.get().getMultiplier() * 20,
+                Config.punishmentForDeathEnabled.get()
+                    ? Config.punishmentForDeathIntensity.get()
+                    : 0
+            );
+            if (shockerInfo.maxIntensity < requiredMaxIntensity) {
                 LOGGER.warn(
-                    Utils.log("The Max Intensity setting of PiShock shocker \"{}\" is too low ({}). It either needs to be set it at least {} or you need to lower the intensity setting in the mod configuration. See the mod documentation for more details."),
+                    Utils.log("The Max Intensity setting of PiShock shocker \"{}\" is too low ({}). It either needs to be set it at least {} or you need to lower the intensity settings in the mod configuration. See the mod documentation for more details."),
                     shockerInfo.name,
                     shockerInfo.maxIntensity,
-                    Config.intensity.get().getMultiplier() * 20
+                    requiredMaxIntensity
                 );
 
                 this.connectionState = CONNECTION_STATE.CONNECTED_WITH_WARNING;

@@ -66,8 +66,8 @@ public class PiShockForMC {
                 punishmentForDeathState = PUNISHMENT_FOR_DEATH_STATE.DONE;
                 API.sendRequest(
                     Config.mode.get(),
-                    (int) (20f * Config.intensity.get().getMultiplier()),
-                    5
+                    Config.punishmentForDeathIntensity.get(),
+                    Config.punishmentForDeathDuration.get()
                 );
             }
 
@@ -142,7 +142,7 @@ public class PiShockForMC {
 
         // The main business logic
         // First checks if the player is dead and if the punishment for death is enabled...
-        if (currentHealth <= 0 && Config.punishmentForDeath.get()) {
+        if (currentHealth <= 0 && Config.punishmentForDeathEnabled.get()) {
             if (PUNISHMENT_FOR_DEATH_STATE.DONE.equals(punishmentForDeathState)) {
                 LOGGER.trace(Utils.log("Player is dead but has been already punished for this death --> Do nothing"));
                 return;

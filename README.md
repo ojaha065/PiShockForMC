@@ -42,48 +42,45 @@ However, even in that case the player will never be shocked with higher intensit
 The mod configuration file is named `pishockmc-client.toml` and it can be edited with any text editor. In-game settings GUI might be added in a later release to make configuring easier. The configuration file will look like this:
 
 ```
-#"Shock" is the intended mode for this mod. Vibrate and Beep are more suitable for testing and debugging.
-#Allowed Values: Shock, Vibrate, Beep
 mode = "Shock"
-#Set the shock/vibration/beep intensity range
-#The percentage ranges from lowest to highest are: 1 - 20, 21 - 40, 41 - 60, 61 - 80, 80 - 100
-#Allowed Values: MINIMAL, NORMAL, INTENSE, HARDCORE, ULTRA_HARDCORE
-intensity_range = "MINIMAL"
-#If enabled, sends 5 second shock/vibrate/beep at the maximum* intensity when the player dies
-#(*the maximum is based on the configured intensity range)
-punishment_for_death = false
+intensity_range = "NORMAL"
+
+[punishment_for_death]
+	enabled = false
+	intensity = 50
+	duration = 5
 
 [pishock]
-	#Username you use to log into PiShock.com. Can be found in the Account section of the website.
 	username = ""
-	#API Key generated on PiShock.com Can be found in the Account section of the website.
 	apikey = ""
-	#Sharecode generated on PiShock.com. Limitations can be set when generating the code.
 	code = ""
-
-
 ```
 
-`username`, `apikey` and `code` are all mandatory, and you must get all of them from [pishock.com](https://pishock.com). It's also important to set the desired intensity level (`intensity_range`). The default value is `MINIMAL`, but personally I feel that `NORMAL` has the best balance between feeling kinda nasty but not being too overwhelming. But it's all very dependent on each person's pain tolerance and location of the shocker, so feel free to experiment.
+`username`, `apikey` and `code` are all mandatory, and you must get all of them from [pishock.com](https://pishock.com).
+It's also important to set the desired intensity level (`intensity_range`).
+The default value is `MINIMAL`, but personally I feel that `NORMAL`or `INTENSE` have the best balance between feeling kinda nasty but not being too overwhelming.
+But it's all very dependent on each person's pain tolerance and location of the shocker, so feel free to experiment.
+Also, please be aware that for most people getting shocked at the same spot multiple times heightens the sensation and each consecutive shock will be more painful.
 
 ### Punishment for death
-Setting `punishment_for_death` option to `true` will send 5-seconds shock at the maxium (within the configured `intensity_range`) intensity when the player dies in-game.
-More configurable (intensity, duration etc.) punishment might be added in a later release.
+Setting `punishment_for_death` --> `enabled` option to `true` will send a shock with the configured intensity and duration when the player dies in-game.
 
 ### :warning: Important notice
-The mod uses duration of 600 milliseconds for most shocks.
+The mod uses duration of 600 milliseconds for shocks.
 Using milliseconds instead of seconds is currently undocumented feature in PiShock API,
 and it seems that `Max Duration` setting for share codes does not work correctly with it.
-When creating a share code, the `Max Duration` value needs to be set to at least 6 (seconds).
+When creating a share code,
+the `Max Duration` value needs to be set to at least 6 (seconds)
+or the value of `punishment_for_death` --> `duration` if it's higher than 6.
 
 ### Intensity ranges
-| intensity_range  | Shock intensity % range |
-| ---------------- | ----------------------- |
-| MINIMAL          | 1% - 20%                |
-| NORMAL           | 21% - 40%               |
-| INTENSE          | 41% - 60%               |
-| HARDCORE         | 61% - 80%               |
-| ULTRA_HARDCORE   | 81% - 100%              |
+| intensity_range | Maxium intensity % |
+|-----------------|--------------------|
+| MINIMAL         | 20%                |
+| NORMAL          | 40%                |
+| INTENSE         | 60%                |
+| HARDCORE        | 80%                |
+| ULTRA_HARDCORE  | 100%               |
 
 ## Common issues and FAQ
 ### Sometimes the shocker isn't activated when it should
@@ -101,7 +98,6 @@ If so, the problem is at PiShock's end, and the mod really cannot do anything ab
   * I currently only own one, so testing and debugging would be kinda hard.
 * In-game configuration GUI
 * More configuration options
-* Better documentation
 
 ## The boring stuff
 ### tl;dr
