@@ -3,6 +3,7 @@ package fi.kissakala.pishockmc;
 import com.google.gson.Gson;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.ForgeConfigSpec;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
 import java.io.Closeable;
@@ -80,7 +81,7 @@ public class PiShockAPI implements Closeable {
                     responseString = new String(is.readAllBytes());
                 }
 
-                if (!"Operation Succeeded.".equals(responseString)) {
+                if (!StringUtils.equalsAny(responseString, "Operation Attempted.", "Operation Succeeded.")) {
                     throw new RuntimeException("PiShock API request failed: " + responseString);
                 }
             } catch (final Exception error) {
@@ -136,13 +137,6 @@ public class PiShockAPI implements Closeable {
                     shockerInfo.maxIntensity,
                     requiredMaxIntensity
                 );
-
-                this.connectionState = CONNECTION_STATE.CONNECTED_WITH_WARNING;
-                return this.connectionState;
-            }
-
-            if (!shockerInfo.online) {
-                LOGGER.warn(Utils.log("The configured PiShock device is not online!"));
 
                 this.connectionState = CONNECTION_STATE.CONNECTED_WITH_WARNING;
                 return this.connectionState;
@@ -239,7 +233,6 @@ public class PiShockAPI implements Closeable {
         String name,
         Boolean paused,
         Integer maxIntensity,
-        Integer maxDuration,
-        Boolean online
+        Integer maxDuration
     ){}
 }

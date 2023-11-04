@@ -4,11 +4,14 @@ to connect their [PiShock](https://pishock.com) device to the game for added rea
 Whenever the player takes damage, they will get a corresponding shock,
 the intensity of which can be configured and will scale up based on the amount of damage taken.
 
-**This is a client-side mod, it should only be installed client-side, and it works in multiplayer too.**
+**This is a client-side mod. It works in multiplayer too but should be installed and configured client-side only.**
+
+## :information_source: Important info for PiShock firmware V3 users
+If you have updated your PiShock firmware to V3 (beta) you must use version 1.1.2.0 or later of the mod.
 
 ## Supported Minecraft/Minecraft Forge versions
 * 1.19.x (Minecraft Forge 44.x, 45.x)
-* 1.20.x (Minecraft Forge 46.x, 47.x)
+* 1.20.x (Minecraft Forge 46.x, 47.x, 48.x)
 
 ## Needed hardware
 * A PiShock
