@@ -1,10 +1,10 @@
 package fi.kissakala.pishockmc;
 
 import com.google.gson.Gson;
-import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.Closeable;
 import java.io.InputStream;
@@ -22,7 +22,7 @@ import java.util.stream.Stream;
  * <a href="https://pishock.com">API documentation</a>
  */
 public class PiShockAPI implements Closeable {
-    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger("pishockmc");
     private static final Gson GSON = new Gson();
 
     private final URI API_URL;

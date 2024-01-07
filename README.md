@@ -11,10 +11,10 @@ If you have updated your PiShock firmware to V3 (beta) you must use version 1.1.
 
 ## Supported Minecraft/Minecraft Forge versions
 * 1.19.x (Minecraft Forge 44.x, 45.x)
-* 1.20.x (Minecraft Forge 46.x, 47.x, 48.x)
+* 1.20.x (Minecraft Forge 46.x, 47.x, 48.x, 49.x)
 
 ## Needed hardware
-* A PiShock
+* [A PiShock](https://pishock.com)
 * A shocker — needs to be paired to the PiShock
   * See [PiShock website](https://pishock.com) for help on pairing your shocker.
   * Multiple shockers might be supported in a future release.
@@ -28,13 +28,13 @@ If you have updated your PiShock firmware to V3 (beta) you must use version 1.1.
 0. Have a working Minecraft and Forge installation. See [How to install Forge](https://www.wikihow.com/Install-Minecraft-Forge) if you're unsure.
    * Make sure you've launched the game at least once with Forge installed so the required folder structure is generated.
 1. Download the latest release jar from [here](https://github.com/ojaha065/PiShockForMC/releases).
-2. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Where are Minecraft files stored?](https://help.minecraft.net/hc/en-us/articles/4409159214605-Managing-Data-and-Game-Storage-in-Minecraft-Java-Edition-#h_01FGA90Z06DE00GT8E81SWX9SE) if you're unsure how to find the correct game directory.
+2. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Where are Minecraft files stored?](https://help.minecraft.net/hc/en-us/articles/4409159214605-Managing-Data-and-Game-Storage-in-Minecraft-Java-Edition-) if you're unsure how to find the correct game directory.
 3. Run the game once so a configuration file for the mod gets generated.
 4. See the _Mod configuration_ section below. The configuration file can be found inside `config` folder inside Minecraft game directory.
 5. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
 
 ## Modpacks and compatability with other mods
-The mod is licensed under a MIT license, so feel free to include it in any modpack. No attribution is required.
+The mod is licensed under a MIT license, so feel free to include it in any modpack. No permission or attribution is required.
 
 This mod should be compatible with almost everything.
 If you're using other mods that alter the player health (e.g., changes the maxium health),
@@ -71,7 +71,7 @@ Setting `punishment_for_death` --> `enabled` option to `true` will send a shock 
 ### :warning: Important notice
 The mod uses duration of 600 milliseconds for shocks.
 Using milliseconds instead of seconds is currently undocumented feature in PiShock API,
-and it seems that `Max Duration` setting for share codes does not work correctly with it.
+and it seems that `Max Duration` setting for share codes does not work correctly with it. (Not even in the new V3 UI)
 When creating a share code,
 the `Max Duration` value needs to be set to at least 6 (seconds)
 or the value of `punishment_for_death` --> `duration` if it's higher than 6.
@@ -87,7 +87,7 @@ or the value of `punishment_for_death` --> `duration` if it's higher than 6.
 
 ## Common issues and FAQ
 ### Sometimes the shocker isn't activated when it should
-From personal experience,
+From a personal experience,
 I've found that sometimes the PiShock device itself and/or the shocker are a little finicky
 and might sometimes (rarely) skip some shocks if multiple ones are sent in a short period of time.
 
@@ -95,6 +95,12 @@ If you're experiencing this,
 the first step is to check the logs at [pishock.com](https://pishock.com)
 and see if a correct amount API events from `PiShock integration for Minecraft` is displayed.
 If so, the problem is at PiShock's end, and the mod really cannot do anything about it.
+
+### The game is telling me that *There seems to be some kind of misconfiguration or issue with PiShock configuration.*
+Please take a look in Minecraft logs and search for `pishockmc`. In many cases, the mod logs the actual issue and some helpful advice.
+
+### I have some other issue(s) with the mod
+Please open [an issue](https://github.com/ojaha065/PiShockForMC/issues) here on GitHub.
 
 ## TODO
 * **Support for multiple shockers**
@@ -107,7 +113,7 @@ If so, the problem is at PiShock's end, and the mod really cannot do anything ab
 Don't be stupid.
 
 ### Long version
-Although nothing about this repository is inherently age gated,
+Although nothing about this repository is inherently age-gated,
 the PiShock device and themes around it are targeted towards mature audiences only.
 Proceed at your own discretion.
 
@@ -116,4 +122,4 @@ It's not recommended to put any kind of electrical device near the heart
 or use any kind of shock collar if you have a heart condition.
 Shock collars are not meant for use on humans and can cause serious injury, even cardiac events.
 We kindly urge you to prioritize safety,
-understand your personal and others limitations, and exercise caution at all times.
+understand your personal and others' limitations, and exercise caution at all times.
