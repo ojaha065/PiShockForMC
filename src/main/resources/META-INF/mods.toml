@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/ojaha065/PiShockForMC/issues"
 
 [[mods]]
 modId="pishockmc"
-version="1.20-1.1.2.0"
+version="1.20-1.1.2.1"
 displayName="PiShock for Minecraft"
 
 #updateJSONURL="https://change.me.example.invalid/updates.json" # TODO
