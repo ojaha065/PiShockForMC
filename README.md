@@ -1,37 +1,37 @@
 # PiShock Shock Collar Integration for Minecraft
-This simple Forge mod allows players
-to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun..._:smiling_imp:
+This Forge mod allows players
+to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun..._:smiling_imp:.
 Whenever the player takes damage, they will get a corresponding shock,
 the intensity of which can be configured and will scale up based on the amount of damage taken.
 
 **This is a client-side mod. It works in multiplayer too but should be installed and configured client-side only.**
 
-## :information_source: Important info for PiShock firmware V3 users
-If you have updated your PiShock firmware to V3 (beta) you must use version 1.1.2.0 or later of the mod.
+## :information_source: Important info about PiShock firmware V3
+If you have updated your PiShock firmware to V3 (beta), you must use version 1.1.2.0 or later of the mod.
 
 ## Supported Minecraft/Minecraft Forge versions
 * 1.19.x (Minecraft Forge 44.x, 45.x)
 * 1.20.x (Minecraft Forge 46.x, 47.x, 48.x, 49.x)
 
 ## Needed hardware
-* [A PiShock](https://pishock.com)
+* [A PiShock](https://pishock.com) device
 * A shocker — needs to be paired to the PiShock
   * See [PiShock website](https://pishock.com) for help on pairing your shocker.
-  * Multiple shockers might be supported in a future release.
+  * Multiple shockers are not yet supported but might be in a future release.
 
 ## Setup instructions (tl;dr — I've done this kind of thing before, and I know what I'm doing)
-1. Download the latest release and drop the jar into Forge `mods` folder.
+1. Download the latest release and drop the jar into Forge mods folder.
 2. Launch the game once and then see the _Mod configuration_ section below.
 3. Launch the game again. If everything is set currently, the shocker will vibrate once for one second during the Minecraft startup process.
 
 ## Setup instructions (longer version)
-0. Have a working Minecraft and Forge installation. See [How to install Forge](https://www.wikihow.com/Install-Minecraft-Forge) if you're unsure.
+1. Have a working Minecraft and Forge installation. See [How to install Forge](https://www.wikihow.com/Install-Minecraft-Forge) if you're unsure.
    * Make sure you've launched the game at least once with Forge installed so the required folder structure is generated.
-1. Download the latest release jar from [here](https://github.com/ojaha065/PiShockForMC/releases).
-2. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Where are Minecraft files stored?](https://help.minecraft.net/hc/en-us/articles/4409159214605-Managing-Data-and-Game-Storage-in-Minecraft-Java-Edition-) if you're unsure how to find the correct game directory.
-3. Run the game once so a configuration file for the mod gets generated.
-4. See the _Mod configuration_ section below. The configuration file can be found inside `config` folder inside Minecraft game directory.
-5. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
+2. Download the latest release jar from [here](https://github.com/ojaha065/PiShockForMC/releases).
+3. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Where are Minecraft files stored?](https://help.minecraft.net/hc/en-us/articles/4409159214605-Managing-Data-and-Game-Storage-in-Minecraft-Java-Edition-) if you're unsure how to find the correct game directory.
+4. Run the game once so a configuration file for the mod gets generated.
+5. See the _Mod configuration_ section below. The configuration file can be found inside `config` folder inside Minecraft game directory.
+6. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
 
 ## Modpacks and compatability with other mods
 The mod is licensed under a MIT license, so feel free to include it in any modpack. No permission or attribution is required.
@@ -96,8 +96,10 @@ the first step is to check the logs at [pishock.com](https://pishock.com)
 and see if a correct amount API events from `PiShock integration for Minecraft` is displayed.
 If so, the problem is at PiShock's end, and the mod really cannot do anything about it.
 
-### The game is telling me that *There seems to be some kind of misconfiguration or issue with PiShock configuration.*
-Please take a look in Minecraft logs and search for `pishockmc`. In many cases, the mod logs the actual issue and some helpful advice.
+### The game is telling me that *There seems to be some kind of misconfiguration or issue with PiShock configuration*.
+This usually means that the provided share code has too restrictive limitations (too low Max duration or Max intensity). 
+Please take a look in Minecraft logs and search for `pishockmc`.
+The actual issue and some helpful advice should be printed there.
 
 ### I have some other issue(s) with the mod
 Please open [an issue](https://github.com/ojaha065/PiShockForMC/issues) here on GitHub.
@@ -109,10 +111,7 @@ Please open [an issue](https://github.com/ojaha065/PiShockForMC/issues) here on 
 * More configuration options
 
 ## The boring stuff
-### tl;dr
-Don't be stupid.
 
-### Long version
 Although nothing about this repository is inherently age-gated,
 the PiShock device and themes around it are targeted towards mature audiences only.
 Proceed at your own discretion.
