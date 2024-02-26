@@ -1,4 +1,4 @@
-# PiShock Shock Collar Integration for Minecraft
+# PiShock Shock Collar Integration for Minecraft: Java Edition
 This Forge mod allows players
 to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun..._:smiling_imp:.
 Whenever the player takes damage, they will get a corresponding shock,
@@ -39,7 +39,8 @@ The mod is licensed under a MIT license, so feel free to include it in any modpa
 This mod should be compatible with almost everything.
 If you're using other mods that alter the player health (e.g., changes the maxium health),
 please note that the shock intensity scaling might not work as expected.
-However, even in that case the player will never be shocked with higher intensity than the configured `intensity_range` allows.
+However,
+even in that case the player will never be shocked with a higher intensity than the configured `intensity_range` allows.
 
 ## Mod configuration
 The mod configuration file is named `pishockmc-client.toml` and it can be edited with any text editor. In-game settings GUI might be added in a later release to make configuring easier. The configuration file will look like this:
@@ -59,11 +60,16 @@ intensity_range = "NORMAL"
 	code = ""
 ```
 
-`username`, `apikey` and `code` are all mandatory, and you must get all of them from [pishock.com](https://pishock.com).
+`username`, `apikey` and `code` are all mandatory, and you can get all of them from [pishock.com](https://pishock.com).
 It's also important to set the desired intensity level (`intensity_range`).
-The default value is `MINIMAL`, but personally I feel that `NORMAL`or `INTENSE` have the best balance between feeling kinda nasty but not being too overwhelming.
-But it's all very dependent on each person's pain tolerance and location of the shocker, so feel free to experiment.
-Also, please be aware that for most people getting shocked at the same spot multiple times heightens the sensation and each consecutive shock will be more painful.
+The default value is `MINIMAL`,
+but for me personally `NORMAL`or `INTENSE` have the best balance
+between feeling kinda nasty but not being too overwhelming.
+But it's all very dependent on each person's pain tolerance and location of the shocker,
+so you need to experiment what works for each person.
+Also,
+please be aware that for most people getting shocked at the same spot multiple times drastically heightens the sensation
+and each consecutive shock will be more painful.
 
 ### Punishment for death
 Setting `punishment_for_death` --> `enabled` option to `true` will send a shock with the configured intensity and duration when the player dies in-game.
@@ -76,14 +82,29 @@ When creating a share code,
 the `Max Duration` value needs to be set to at least 6 (seconds)
 or the value of `punishment_for_death` --> `duration` if it's higher than 6.
 
-### Intensity ranges
-| intensity_range | Maxium intensity % |
-|-----------------|--------------------|
-| MINIMAL         | 20%                |
-| NORMAL          | 40%                |
-| INTENSE         | 60%                |
-| HARDCORE        | 80%                |
-| ULTRA_HARDCORE  | 100%               |
+The mod will warn about a misconfiguration if this is not set correctly.
+
+### Shock intensity calculation
+The intensity of the shock is calculated using the following formula:
+[The amount of damage taken] * [intensity range multiplayer (see the table below)].
+The maximum amount of damage taken into account is 20 (10 hearts).
+This won't be exceeded even if other mods raise the player's maximum health.
+If [absorption](https://minecraft.fandom.com/wiki/Absorption) cancels the incoming damage, no shock will be triggered.
+
+After a shock is triggered,
+there's a cooldown of 25 ticks (just bit over a second) before another shock can be triggered.
+The damage taken during that time will be backlogged,
+and another shock with the intensity calculated using the accumulated damage will be triggered after the cooldown ends.
+
+
+### Intensity ranges and multipliers
+| intensity_range | Maxium intensity % | Damage Multiplier |
+|-----------------|--------------------|-------------------|
+| MINIMAL         | 20%                | 1                 |
+| NORMAL          | 40%                | 2                 |
+| INTENSE         | 60%                | 3                 |
+| HARDCORE        | 80%                | 4                 |
+| ULTRA_HARDCORE  | 100%               | 5                 |
 
 ## Common issues and FAQ
 ### Sometimes the shocker isn't activated when it should
@@ -108,7 +129,9 @@ Please open [an issue](https://github.com/ojaha065/PiShockForMC/issues) here on 
 * **Support for multiple shockers**
   * I currently only own one, so testing and debugging would be kinda hard.
 * In-game configuration GUI
-* More configuration options
+* **More configuration options**
+  * Configurable shock duration
+  * Configurable cooldown time
 
 ## The boring stuff
 

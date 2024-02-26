@@ -1,7 +1,6 @@
 package fi.kissakala.pishockmc;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -108,22 +107,22 @@ public class PiShockForMC {
 
             // FIXME: Messy
             if (API.getConnectionState().equals(PiShockAPI.CONNECTION_STATE.OK)) {
-                Minecraft.getInstance().gui.getChat().addMessage(Component.literal("PiShock enabled. You'll be punished for any damage you take..."));
+                Utils.logToChat("PiShock enabled. You'll be punished for any damage you take...");
                 gracePeriodTimer = null;
             } else if (API.getConnectionState().equals(PiShockAPI.CONNECTION_STATE.CONNECTED_WITH_WARNING)) {
-                Minecraft.getInstance().gui.getChat().addMessage(Component.literal("PiShock enabled. You'll be punished for any damage you take..."));
-                Minecraft.getInstance().gui.getChat().addMessage(Component.literal("[WARNING] There seems to be some kind of misconfiguration or issue with PiShock configuration. Please check the Minecraft Output logs and mod documentation for more details."));
+                Utils.logToChat("PiShock enabled. You'll be punished for any damage you take...");
+                Utils.logToChat("[WARNING] There seems to be some kind of misconfiguration or issue with PiShock configuration. Please check the Minecraft Output logs and mod documentation for more details.");
                 gracePeriodTimer = null;
             } else {
                 gracePeriodTimer = 20 * 10;
                 API.connect().thenAccept(connectionState -> {
                     if (connectionState.equals(PiShockAPI.CONNECTION_STATE.OK)) {
-                        Minecraft.getInstance().gui.getChat().addMessage(Component.literal("PiShock enabled. You'll be punished for any damage you take..."));
+                        Utils.logToChat("PiShock enabled. You'll be punished for any damage you take...");
                     } else if (connectionState.equals(PiShockAPI.CONNECTION_STATE.CONNECTED_WITH_WARNING)) {
-                        Minecraft.getInstance().gui.getChat().addMessage(Component.literal("PiShock enabled. You'll be punished for any damage you take..."));
-                        Minecraft.getInstance().gui.getChat().addMessage(Component.literal("[WARNING] There seems to be some kind of misconfiguration or issue with PiShock configuration. Please check the Minecraft Output logs and mod documentation for more details."));
+                        Utils.logToChat("PiShock enabled. You'll be punished for any damage you take...");
+                        Utils.logToChat("[WARNING] There seems to be some kind of misconfiguration or issue with PiShock configuration. Please check the Minecraft Output logs and mod documentation for more details.");
                     } else {
-                        Minecraft.getInstance().gui.getChat().addMessage(Component.literal("It seems that Minecraft cannot connect to your PiShock device. Please check the Minecraft Output logs and mod documentation for more help."));
+                        Utils.logToChat("It seems that Minecraft cannot connect to your PiShock device. Please check the Minecraft Output logs and mod documentation for more help.");
                     }
 
                     gracePeriodTimer = null;

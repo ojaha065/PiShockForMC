@@ -58,10 +58,10 @@ public class Config {
 
 	public enum INTENSITY_SETTING_VALUE {
 		MINIMAL(1f), // 1 - 20
-		NORMAL(2f), // 21 - 40
-		INTENSE(3f), // 41 - 60
-		HARDCORE(4f), // 61 - 80
-		ULTRA_HARDCORE(5f); // 81 - 100
+		NORMAL(2f), // 2 - 40
+		INTENSE(3f), // 3 - 60
+		HARDCORE(4f), // 4 - 80
+		ULTRA_HARDCORE(5f); // 5 - 100
 
 		private final float multiplier;
 		INTENSITY_SETTING_VALUE(final float multiplier) {

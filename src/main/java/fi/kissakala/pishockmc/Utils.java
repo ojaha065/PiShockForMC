@@ -1,5 +1,8 @@
 package fi.kissakala.pishockmc;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+
 import javax.annotation.Nonnull;
 
 public class Utils {
@@ -21,5 +24,13 @@ public class Utils {
 	 */
 	public static String log(@Nonnull final String message) {
 		return "[PiShock] " + message;
+	}
+
+	/**
+	 * Adds a message to the chat
+	 * @param message The message
+	 */
+	public static void logToChat(@Nonnull final String message) {
+		Minecraft.getInstance().gui.getChat().addMessage(Component.literal(message));
 	}
 }
