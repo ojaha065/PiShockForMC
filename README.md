@@ -10,8 +10,16 @@ the intensity of which can be configured and will scale up based on the amount o
 If you have updated your PiShock firmware to V3 (beta), you must use version 1.1.2.0 or later of the mod.
 
 ## Supported Minecraft/Minecraft Forge versions
-* 1.19.x (Minecraft Forge 44.x, 45.x)
-* 1.20.x (Minecraft Forge 46.x, 47.x, 48.x, 49.x)
+### Fully supported (Use the latest version)
+* 1.21 (Minecraft Forge 51.x)
+
+### Deprecated support
+* 1.19.x (Minecraft Forge 44.x, 45.x) (Use version [1.1.2.1](https://github.com/ojaha065/PiShockForMC/releases/download/1.20-1.1.2.1/pishockmc-1.20-1.1.2.1.jar))
+* 1.20.x (Minecraft Forge 46.x, 47.x, 48.x, 49.x) (Use version [1.1.2.1](https://github.com/ojaha065/PiShockForMC/releases/download/1.20-1.1.2.1/pishockmc-1.20-1.1.2.1.jar))
+
+### Untested (might or might not work)
+* Minecraft Forge 50.x
+* Any **newer** Minecraft or Minecraft Forge version not mentioned
 
 ## Needed hardware
 * [A PiShock](https://pishock.com) device
@@ -28,13 +36,13 @@ If you have updated your PiShock firmware to V3 (beta), you must use version 1.1
 1. Have a working Minecraft and Forge installation. See [How to install Forge](https://www.wikihow.com/Install-Minecraft-Forge) if you're unsure.
    * Make sure you've launched the game at least once with Forge installed so the required folder structure is generated.
 2. Download the latest release jar from [here](https://github.com/ojaha065/PiShockForMC/releases).
-3. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Where are Minecraft files stored?](https://help.minecraft.net/hc/en-us/articles/4409159214605-Managing-Data-and-Game-Storage-in-Minecraft-Java-Edition-) if you're unsure how to find the correct game directory.
+3. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Mojang documentation](https://help.minecraft.net/hc/en-us/articles/4409159214605) if you're unsure how to find the correct game directory.
 4. Run the game once so a configuration file for the mod gets generated.
 5. See the _Mod configuration_ section below. The configuration file can be found inside `config` folder inside Minecraft game directory.
 6. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
 
 ## Modpacks and compatability with other mods
-The mod is licensed under a MIT license, so feel free to include it in any modpack. No permission or attribution is required.
+The mod is licensed under a MIT license. Feel free to include it in any modpack, no permission or attribution required.
 
 This mod should be compatible with almost everything.
 If you're using other mods that alter the player health (e.g., changes the maxium health),
@@ -122,10 +130,14 @@ This usually means that the provided share code has too restrictive limitations 
 Please take a look in Minecraft logs and search for `pishockmc`.
 The actual issue and some helpful advice should be printed there.
 
-### I have some other issue(s) with the mod
+### Minecraft fails to start after installing the mod
+Double-check your Minecraft and Forge versions and the beginning of this readme
+and make sure you're using a compatible version of the mod.
+
+### I'm still having issues
 Please open [an issue](https://github.com/ojaha065/PiShockForMC/issues) here on GitHub.
 
-## TODO
+## TODO (PRs welcome)
 * **Support for multiple shockers**
   * I currently only own one, so testing and debugging would be kinda hard.
 * In-game configuration GUI
