@@ -6,8 +6,8 @@ the intensity of which can be configured and will scale up based on the amount o
 
 **This is a client-side mod. It works in multiplayer too but should be installed and configured client-side only.**
 
-## :information_source: Important info about PiShock firmware V3
-If you have updated your PiShock firmware to V3 (beta), you must use version 1.1.2.0 or later of the mod.
+> [!IMPORTANT]
+> If you have updated your PiShock firmware to V3 (beta), you must use version 1.1.2.0 or later of the mod.
 
 ## Supported Minecraft/Minecraft Forge versions
 ### Fully supported (Use the latest version)
@@ -82,14 +82,13 @@ and each consecutive shock will be more painful.
 ### Punishment for death
 Setting `punishment_for_death` --> `enabled` option to `true` will send a shock with the configured intensity and duration when the player dies in-game.
 
-### :warning: Important notice
-The mod uses duration of 600 milliseconds for shocks.
+> [!IMPORTANT]
+> The mod uses duration of 600 milliseconds for shocks.
 Using milliseconds instead of seconds is currently undocumented feature in PiShock API,
 and it seems that `Max Duration` setting for share codes does not work correctly with it. (Not even in the new V3 UI)
 When creating a share code,
 the `Max Duration` value needs to be set to at least 6 (seconds)
 or the value of `punishment_for_death` --> `duration` if it's higher than 6.
-
 The mod will warn about a misconfiguration if this is not set correctly.
 
 ### Shock intensity calculation
