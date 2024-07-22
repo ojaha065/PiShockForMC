@@ -36,7 +36,7 @@ the intensity of which can be configured and will scale up based on the amount o
 1. Have a working Minecraft and Forge installation. See [How to install Forge](https://www.wikihow.com/Install-Minecraft-Forge) if you're unsure.
    * Make sure you've launched the game at least once with Forge installed so the required folder structure is generated.
 2. Download the latest release jar from [here](https://github.com/ojaha065/PiShockForMC/releases).
-3. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See [Mojang documentation](https://help.minecraft.net/hc/en-us/articles/4409159214605) if you're unsure how to find the correct game directory.
+3. Drop the downloaded .jar file into `mods` folder inside Minecraft game directory. See the [Mojang documentation](https://help.minecraft.net/hc/en-us/articles/4409159214605) if you're unsure how to find the correct game directory.
 4. Run the game once so a configuration file for the mod gets generated.
 5. See the _Mod configuration_ section below. The configuration file can be found inside `config` folder inside Minecraft game directory.
 6. Launch the game again. If everything is set correctly, the shocker will vibrate once for one second during the Minecraft startup process.
@@ -138,7 +138,7 @@ Please open [an issue](https://github.com/ojaha065/PiShockForMC/issues) here on 
 
 ## TODO (PRs welcome)
 * **Support for multiple shockers**
-  * I currently only own one, so testing and debugging would be kinda hard.
+  * I currently only own one, so testing and debugging would be kinda hard for me.
 * In-game configuration GUI
 * **More configuration options**
   * Configurable shock duration
@@ -150,9 +150,7 @@ Although nothing about this repository is inherently age-gated,
 the PiShock device and themes around it are targeted towards mature audiences only.
 Proceed at your own discretion.
 
-The authors of this mod are not responsible for any injuries caused by use of any shock collar.
-It's not recommended to put any kind of electrical device near the heart
-or use any kind of shock collar if you have a heart condition.
-Shock collars are not meant for use on humans and can cause serious injury, even cardiac events.
-We kindly urge you to prioritize safety,
-understand your personal and others' limitations, and exercise caution at all times.
+PiShock or the authors of this mod are not responsible for any harm
+caused by misuse of the shock collar sold along with the PiShock device.
+We do not recommend putting any kind of electrical device near the heart or use if you have a heart condition.
+Shock collars are not meant for use on humans and can cause serious injury, including cardiac events.

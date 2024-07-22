@@ -1,10 +1,9 @@
 plugins {
-    id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
 }
 
-version = '1.21-2.0.0.0'
+version = '1.21-2.0.1.0'
 group = 'fi.kissakala'
 base.archivesName = 'pishockmc'
 
@@ -20,7 +19,6 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'pishockmc'
         }
     }
 }
@@ -33,13 +31,13 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:1.21-51.0.8"
+    minecraft "net.minecraftforge:forge:1.21-51.0.26"
 
     // Hack fix for now, force jopt-simple to be exactly 5.0.4 because Mojang ships that version, but some transitive dependencies request 6.0+
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 }
 
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
                 "Specification-Title"     : "PiShock for Minecraft",

@@ -5,6 +5,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class Config {
 	public static ForgeConfigSpec INSTANCE;
 
+	public static ForgeConfigSpec.ConfigValue<String> pishockAPIURL;
+
 	public static ForgeConfigSpec.ConfigValue<String> username;
 	public static ForgeConfigSpec.ConfigValue<String> apikey;
 	public static ForgeConfigSpec.ConfigValue<String> code;
@@ -21,6 +23,10 @@ public class Config {
 	}
 
 	private static ForgeConfigSpec.Builder build(final ForgeConfigSpec.Builder builder) {
+		pishockAPIURL = builder
+			.comment("Set if you want to use a different URL for accessing the PiShock API for some reason. Usually you don't need to change this.")
+			.define("pishock.APIURL", "https://do.pishock.com/api/");
+
 		username = builder
 			.comment("Username you use to log into PiShock.com. Can be found in the Account section of the website.")
 			.define("pishock.username", "");

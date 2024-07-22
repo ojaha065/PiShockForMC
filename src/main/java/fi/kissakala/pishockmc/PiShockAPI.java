@@ -31,7 +31,7 @@ public class PiShockAPI implements Closeable {
 
     public PiShockAPI() {
         try {
-            this.API_URL = new URI("https://do.pishock.com/api/");
+            this.API_URL = new URI(StringUtils.appendIfMissing(Config.pishockAPIURL.get(), "/"));
             this.worker = Executors.newSingleThreadExecutor();
 
             connect().get();
@@ -65,7 +65,7 @@ public class PiShockAPI implements Closeable {
                     Map.entry("Intensity", Utils.clamp(intensity, 1, 100))
                 );
 
-                final HttpURLConnection con = (HttpURLConnection) API_URL.resolve("./apioperate").toURL().openConnection();
+                final HttpURLConnection con = (HttpURLConnection) API_URL.resolve("apioperate").toURL().openConnection();
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json");
                 con.setRequestProperty("Accept", "text/plain");
@@ -85,7 +85,7 @@ public class PiShockAPI implements Closeable {
                     throw new RuntimeException("PiShock API request failed: " + responseString);
                 }
             } catch (final Exception error) {
-                LOGGER.error("Error accessing PiShock API", error);
+                LOGGER.error(Utils.log("Error accessing PiShock API {API URL: %s}".formatted(this.API_URL.toString())), error);
             }
         });
     }
@@ -100,7 +100,7 @@ public class PiShockAPI implements Closeable {
 
         return getShockerInfo().orTimeout(8, TimeUnit.SECONDS).handle((shockerInfo, error) -> {
             if (error != null) {
-                LOGGER.warn(Utils.log("Could not get Shocker Info from PiShock API"), error);
+                LOGGER.warn(Utils.log("Error accessing PiShock API {API URL: %s}".formatted(this.API_URL.toString())), error);
 
                 this.connectionState = CONNECTION_STATE.NOT_CONNECTED;
                 return this.connectionState;
@@ -169,7 +169,7 @@ public class PiShockAPI implements Closeable {
                     Map.entry("Code", Config.code.get())
                 );
 
-                final HttpURLConnection con = (HttpURLConnection) API_URL.resolve("./GetShockerInfo").toURL().openConnection();
+                final HttpURLConnection con = (HttpURLConnection) API_URL.resolve("GetShockerInfo").toURL().openConnection();
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json");
                 con.setRequestProperty("Accept", "application/json");
