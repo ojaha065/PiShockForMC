@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Development work halted in October 2024. There are far better alternatives available now than this one. Feel free to fork this repository if for some odd reason someone wants to continue maintaining this.
+
 # PiShock Shock Collar Integration for Minecraft: Java Edition
 This Forge mod allows players
 to connect their [PiShock](https://pishock.com) device to the game for added realism and _...fun..._:smiling_imp:.
